@@ -3,20 +3,21 @@ $(() => {
     getUserInfo();
 
     // 绑定退出按钮点击事件
-    $('#btnLogin').on('click', logout)
+    $('#btnLogin').on('click', logout);
 })
 
 // 获取用户基本信息
 function getUserInfo() {
     $.ajax({
         method: 'GET',
-        url: 'http://ajax.frontend.itheima.net/my/userinfo',
+        url: '/my/userinfo',
         headers: {
             Authorization: localStorage.getItem('token')
         },
         success(res) {
             // 判断是否获取用户信息成功
-            if (res.status != 0) return layui.layer.msg('获取用户信息失败')
+            console.log(res);
+            if (res.status != 0) return layui.layer.msg('获取用户信息失败');
             // 调用 renderAvatar 渲染用户头像
             renderAvatar(res.data);
         }
@@ -44,11 +45,11 @@ function renderAvatar(userData) {
 // 退出按钮
 function logout() {
     // 弹出确认框
-    layui.layer.confirm('您确定要退出吗?', { icon: 3, title: '提示' }, function (index) {
+    layui.layer.confirm('您确定要退出吗?', { icon: 3, title: '系统提示' }, function (index) {
         // 删除 localStorage 中的 token值
         localStorage.removeItem('token');
         // 跳转到登录页面
-        location = '/login.html';
+        location.href = '/login.html';
         layer.close(index);
     });
 }

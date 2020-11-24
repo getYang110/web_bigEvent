@@ -4,8 +4,29 @@ $.ajaxPrefilter(function (Obj) {
 
     // 统一为有权限的接口，设置 headers 请求头
     if (Obj.url.indexOf('/my/') > -1) {
-        options.headers = {
+        Obj.headers = {
             Authorization: localStorage.getItem('token')
+        }
+    }
+    // 全局统一挂在 complete 回调函数
+    Obj.complete = function (res) {
+        console.log(res);
+        // console.log(res.responseJSON);
+        if (res.responseJSON.status == 1 && res.responseJSON.message == '身份认证失败！') {
+            // 没有登录 则
+            // 显示需要重新登录 的消息
+            layui.layer.msg(res.responseJSON.message, {
+                icon: 1,
+                time: 1500
+            }, function () {
+                // 清空 token
+                localStorage.removeItem('token')
+                // 跳转到 login.html
+                location.href = '/login.html'
+            });
+            // 清空 token
+            localStorage.removeItem('token');
+
         }
     }
 })
