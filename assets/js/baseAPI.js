@@ -10,7 +10,7 @@ $.ajaxPrefilter(function (Obj) {
     }
     // 全局统一挂在 complete 回调函数
     Obj.complete = function (res) {
-        console.log(res);
+        // console.log(res);
         // console.log(res.responseJSON);
         if (res.responseJSON.status == 1 && res.responseJSON.message == '身份认证失败！') {
             // 没有登录 则
