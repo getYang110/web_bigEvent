@@ -1,6 +1,9 @@
 // 入口函数
 $(() => {
     getUserInfo();
+
+    // 绑定退出按钮点击事件
+    $('#btnLogin').on('click', logout)
 })
 
 // 获取用户基本信息
@@ -37,4 +40,15 @@ function renderAvatar(userData) {
         let firstChar = username[0].toUpperCase(); //获取名字首字
         $('.text-avatar').text(firstChar).show(); //设置文字并显示
     }
+}
+// 退出按钮
+function logout() {
+    // 弹出确认框
+    layui.layer.confirm('您确定要退出吗?', { icon: 3, title: '提示' }, function (index) {
+        // 删除 localStorage 中的 token值
+        localStorage.removeItem('token');
+        // 跳转到登录页面
+        location = '/login.html';
+        layer.close(index);
+    });
 }
