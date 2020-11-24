@@ -1,0 +1,58 @@
+html,
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    /* background-color: tomato; */
+    background: url(../images/login_bg.jpg) no-repeat;
+    background-size: cover;
+}
+
+/* 登录注册区域样式 */
+.loginAndRegBox {
+    width: 400px;
+    height: 310px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+/* 登录注册框标题 */
+.tatle-box{
+    height: 60px;
+    background: url(../images/login_title.png) no-repeat center;
+
+}
+/* 默认隐藏 注册框 */
+.reg-box {
+    display: none;
+}
+
+/* 表单域样式 */
+.layui-form {
+    padding: 10px 30px;
+}
+
+/* 注册按钮样式 */
+.links {
+    display:flex;
+    justify-content: flex-end;
+}
+.links a {
+    font-size: 12px;
+}
+/* 登录文本框样式 */
+.layui-form-item {
+    position: relative;
+}
+/* 登录文本框 小图标 位置 */
+.layui-form-item .layui-icon{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.layui-form-item .layui-input {
+    padding-left: 32px;
+}
