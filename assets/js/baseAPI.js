@@ -22,7 +22,7 @@ $.ajaxPrefilter(function (Obj) {
                 // 清空 token
                 localStorage.removeItem('token')
                 // 跳转到 login.html
-                location.href = '/login.html'
+                window.parent.location.href = '/login.html'
             });
             // 清空 token
             localStorage.removeItem('token');
